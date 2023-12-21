@@ -28,4 +28,19 @@ public class MensagensJogo {
         System.out.println("| 0 - SAIR                          |");
         System.out.println("=====================================\n");
     }
+
+    public static void exibeMensagemJogoEncerrado() {
+
+        System.out.println("=====================================");
+        System.out.println("|                                   |");
+        System.out.println("|          JOGO ENCERRADO!          |");
+        System.out.println("|                                   |");
+        System.out.println("=====================================\n");
+    }
+
+    public static void exibeMensagemOpcoesLobby() {
+
+        System.out.println("1 - INCIAR JOGO");
+        System.out.println("2 - VOLTAR\n");
+    }
 }

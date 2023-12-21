@@ -8,7 +8,7 @@ public class Pessoa {
     private int fichas;
     
     public String getEmail() {
-        return email;
+        return this.email;
     }
 
     public void setEmail(String email) {
@@ -16,7 +16,7 @@ public class Pessoa {
     }
 
     public String getNome() {
-        return nome;
+        return this.nome;
     }
 
     public void setNome(String nome) {
@@ -24,7 +24,7 @@ public class Pessoa {
     }
 
     public Double getDinheiro() {
-        return dinheiro;
+        return this.dinheiro;
     }
 
     public void setDinheiro(Double dinheiro) {
@@ -32,7 +32,7 @@ public class Pessoa {
     }
 
     public int getFichas() {
-        return fichas;
+        return this.fichas;
     }
 
     public void setFichas(int fichas) {
