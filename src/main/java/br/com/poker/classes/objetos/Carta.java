@@ -1,4 +1,4 @@
-package br.com.poker.entidades;
+package br.com.poker.classes.objetos;
 
 public class Carta {
 

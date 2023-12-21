@@ -1,4 +1,4 @@
-package br.com.poker.entidades;
+package br.com.poker.classes.objetos;
 
 /**
  * Enum com os simbolos possíveis de uma carta.
@@ -6,21 +6,19 @@ package br.com.poker.entidades;
  * @author Maelton Lima
  */
 public enum Simbolo {
-    
-    
-    DOIS( (byte) 2),
-    TRES( (byte) 3),
-    QUATRO( (byte) 4),
-    CINCO( (byte) 5),
-    SEIS( (byte) 6),
-    SETE( (byte) 7),
-    OITO( (byte) 8),
-    NOVE( (byte) 9),
-    DEZ( (byte) 10),
-    J( (byte) 11),
-    Q( (byte) 12),
+    A( (byte) 14),
     K( (byte) 13),
-    A( (byte) 14);
+    Q( (byte) 12),
+    J( (byte) 11),
+    DEZ( (byte) 10),
+    NOVE( (byte) 9),
+    OITO( (byte) 8),
+    SETE( (byte) 7),
+    SEIS( (byte) 6),
+    CINCO( (byte) 5),
+    QUATRO( (byte) 4),
+    TRES( (byte) 3),
+    DOIS( (byte) 2);
 
     byte valorSimbolo;
 
