@@ -1,12 +1,22 @@
 package br.com.poker.classes.atores;
 
+import br.com.poker.classes.objetos.Carta;
 import br.com.poker.interfaces.PessoaJogando;
+import br.com.poker.interfaces.PossuiCartas;
 
-public class Jogador implements PessoaJogando{
+public class Jogador implements PessoaJogando, PossuiCartas{
 
     private String email;
     private String nome;
     private int stack;
+    private Carta maoDeCartas[] = new Carta[2];
+    private byte quantidadeCartasMao = 0;
+
+    @Override
+    public void addCarta(Carta carta) {
+        this.maoDeCartas[quantidadeCartasMao] = carta;
+        this.quantidadeCartasMao++;
+    }
 
     public String getEmail() {
         return this.email;

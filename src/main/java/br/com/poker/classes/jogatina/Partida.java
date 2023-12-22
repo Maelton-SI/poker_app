@@ -20,6 +20,10 @@ public class Partida {
     private Pessoa vencedor;
     private int buyIn;
 
+    public void addRodada(Rodada rodada) {
+        this.rodadas.add(rodada);
+    }
+
     public void resetMesaDeJogadores() {
         this.mesaDeJogadores = new Jogador[8];
         this.quantidadeJogadoresNaMesa = 0;
@@ -125,6 +129,10 @@ public class Partida {
         Scanner scanner = new Scanner(System.in);
         byte quantidadeJogadores = this.getQuantidadeJogadores();
 
+        if(quantidadeJogadores == 0) {
+            return -1; //encerrar jogo
+        }
+
         for(byte jogador = 0; jogador < quantidadeJogadores; jogador++) {
 
             MensagensJogo.limpaConsole();
@@ -141,12 +149,12 @@ public class Partida {
         MensagensJogo.exibeMensagemOpcoesLobby();
         
         do { 
-
+            System.out.print("> ");
             String escolhaOpcaoLobby = scanner.nextLine();
             byte encerramentoDeLobby = switch(escolhaOpcaoLobby) {
-                case "1" -> 1;
-                case "2" -> 0;
-                default -> -1;
+                case "1" -> 1; //iniciar partida
+                case "2" -> 0; //voltar ao lobby
+                default -> -1; //digitar caractere valido
             };
 
             if(encerramentoDeLobby == -1) {
@@ -165,18 +173,33 @@ public class Partida {
         return new Jogador(pessoa, this.getBuyIn());
     }
     
-    public void inciarJogo() {
+    public void iniciarPartida() {
+        
+        System.out.println("\nPartida inciando...");
 
+        while(this.vencedor != null) {
+            Rodada rodada = new Rodada( this.getJogadores() );
+            this.addRodada(rodada);
+        }
     }
 
     public void run() throws IOException, InterruptedException{
-        
-        if(this.iniciarLobby() == 1) {
-            this.inciarJogo();
-        } else {
-            MensagensJogo.limpaConsole();
-            this.resetMesaDeJogadores();
-            this.iniciarLobby();
+        while(true) {
+            byte statusPartida = this.iniciarLobby();
+
+            if(statusPartida == -1) {
+                MensagensJogo.limpaConsole();
+                MensagensJogo.exibeMensagemJogoEncerrado();
+                break;
+
+            } else if(statusPartida == 0) {
+                MensagensJogo.limpaConsole();
+                this.resetMesaDeJogadores();
+
+            } else if(statusPartida == 1) {
+                this.iniciarPartida();
+                break;
+            }
         }
     }
 }
